@@ -3,22 +3,21 @@ include "bob.inc"
 
 # configure the GUI window
 window
-( 
-   size [1920.000 1080.000] 
-   scale 40
+(
+   size [927 1025]
+   scale 85.744
 )
 
 # load an environment bitmap
 floorplan
 (
-   bitmap "Letters_bckgnd.png" 
-   size [80 20 2]
+   bitmap "Letters_bckgnd.png"
+   size [80.000 20.000 2.000]
 )
 
 bigbob
 (
       name "bob1"
-      pose [-32 -8 0 90]
+      pose [38.559 -1.959 0.000 -53.630]
       color "green"
 )
-

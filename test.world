@@ -1,0 +1,24 @@
+include "map.inc"
+include "bob.inc"
+
+# configure the GUI window
+window
+( 
+   size [1920.000 1080.000] 
+   scale 40
+)
+
+# load an environment bitmap
+floorplan
+(
+   bitmap "Letters_bckgnd.png" 
+   size [80 20 2]
+)
+
+bigbob
+(
+      name "bob1"
+      pose [-32 -8 0 90]
+      color "green"
+)
+

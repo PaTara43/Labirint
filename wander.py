@@ -20,9 +20,9 @@ class Mover():
 
         while not rospy.is_shutdown():
             time.sleep(0.2)
-            self.left_f = rospy.Subscriber('/base_scan_0/', LaserScan, self.Callback_left_f)
-            self.left_r = rospy.Subscriber('/base_scan_1/', LaserScan, self.Callback_left_r)
-            self.front = rospy.Subscriber('/base_scan_2/', LaserScan, self.Callback_front)
+            rospy.Subscriber('/base_scan_0/', LaserScan, self.Callback_left_f)
+            rospy.Subscriber('/base_scan_1/', LaserScan, self.Callback_left_r)
+            rospy.Subscriber('/base_scan_2/', LaserScan, self.Callback_front)
             self.move_till_wall()
 
     def move_till_wall(self):
@@ -36,22 +36,22 @@ class Mover():
             self.vel_msg.linear.x = 1
             self.vel_msg.angular.z = 0
             self.velocity_publisher.publish(self.vel_msg)
-            return(0)
+
         elif ((self.dist_left_f > 0.3) & (self.dist_left_r > 0.3) & (self.dist_left_f < 1) & (self.dist_left_r < 1)):
             self.vel_msg.linear.x = 1
             self.vel_msg.angular.z = 2*(self.dist_left_f-self.dist_left_r)
             self.velocity_publisher.publish(self.vel_msg)
-            return(0)
+
         elif ((self.dist_left_f <= 0.3) & (self.dist_left_r <= 0.3)):
             self.vel_msg.linear.x = 1
             self.vel_msg.angular.z = -0.5
             self.velocity_publisher.publish(self.vel_msg)
-            return(0)
+
         elif ((self.dist_left_f >= 1)):
             self.vel_msg.linear.x = 0.5
             self.vel_msg.angular.z = 0.5
             self.velocity_publisher.publish(self.vel_msg)
-            return(0)
+
         else:
             self.vel_msg.linear.x = 1
             self.vel_msg.angular.z = 0
